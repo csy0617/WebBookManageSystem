@@ -8,8 +8,14 @@ public interface BookDao {
 	//查询所有图书列表
 	List<Book> selectAllBooks(int start, int pagenum);
 	
+	//查询所有图书的数量
+	int allBooksCount();
+	
 	//根据出版社关键字查找图书
-	List<Book> selectBooksLikePublicLimit(String bname,int start,int pagenum);
+	List<Book> selectBooksLikePublicLimit(String pname,int start,int pagenum);
+	
+	//查询所有根据出版社关键字查找到的图书的数量
+	int countByPublicName(String pname);
 	
 	//添加图书
 	boolean addBook(Book book);
