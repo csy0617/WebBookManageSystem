@@ -45,4 +45,17 @@ public class BookServiceImpl implements BookService {
 		return bookDao.updateBook(book);
 	}
 
+	@Override
+	public List<Book> getAllBooks() {
+		// TODO Auto-generated method stub
+		return bookDao.selectAllBooksWithNoPage();
+	}
+
+	@Override
+	public List<Book> getBookByName(String bname) {
+		// TODO Auto-generated method stub
+		return bookDao.selectBookByName(bname);
+		
+	}
+
 }

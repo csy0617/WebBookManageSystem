@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-<title>所有书籍</title>
+<title>修改页面</title>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="<%=application.getContextPath()%>/js/JQuery3.5.1.js"></script>
 <!-- Bootstrap -->
@@ -38,78 +38,51 @@ form {
 }
 </style>
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
-		
-			<div class="col-md-8 col-md-offset-2">
-			
-				<form>
-				<h3 style="text-align: center;">所有书籍列表</h3>
-					<table class="table table-bordered">
-						<tr>
-							<th>图书名称</th>
-							<th>作者</th>
-							<th>出版社</th>
-							<th>价格</th>
-							<th>编号</th>
-							<th>操作</th>
-						</tr>
-						<c:forEach items="${page.list}" var="book">
-							<tr>
-								<td>${book.name}</td>
-								<td>${book.author}</td>
-								<td>${book.publicName}</td>
-								<td>${book.price}</td>
-								<td>${book.hardCode}</td>
-								<td><a class="button"
-									href="<%=application.getContextPath() %>/DeleteBookServlet?bname=${book.name}">删除</a>
-									<a class="button"
-									href="<%=application.getContextPath() %>/UpdateBookInfoServlet?bname=${book.name}">修改</a></td>
-							</tr>
-						</c:forEach>
-					</table>
-				</form>
-			</div>
+
+			<form class="form-horizontal"
+				action="<%=application.getContextPath()%>/InsertServlet"
+				method="post">
+				<h3 style="text-align: center;">添加新图书至列表</h3>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">名称：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="bname" name="bname" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">作者：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="author" name="author" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">出版社：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="publicname" name="publicname" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">价格：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="price" name="price" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">编码：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="code" name="code" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" class="btn btn-default" value="提交" /> <input
+							type="reset" class="btn btn-default" value="重置" />
+					</div>
+				</div>
+			</form>
 		</div>
-
-		<!-- 分页 -->
-		<div class="row" style="text-align: center;">
-			<nav aria-label="...">
-				<ul class="pagination">
-					<!-- 页面跳转走js的方法 a标签走的js方法 -->
-					<li><a
-						href="<%=application.getContextPath()%>/AllBookListServlet?curPage=1">首页
-					</a></li>
-					<li><a
-						href="<%=application.getContextPath() %>/AllBookListServlet?curPage=${page.prePage}"
-						aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-
-					<c:forEach var="i" items="${page.nums}">
-						<c:choose>
-							<c:when test="${i==page.curPage}">
-								<li class="active"><a
-									href="<%=application.getContextPath() %>/AllBookListServlet?curPage=${i}">${i}
-								</a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a
-									href="<%=application.getContextPath() %>/AllBookListServlet?curPage=${i}">${i}
-								</a></li>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-
-					<li><a
-						href="<%=application.getContextPath() %>/AllBookListServlet?curPage=${page.nextPage}"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-					</a></li>
-					<li><a
-						href="<%=application.getContextPath() %>/AllBookListServlet?curPage=${page.lastPage}">尾页
-					</a></li>
-				</ul>
-			</nav>
-		</div>
-		
 		<div class="row" style="text-align: center;">
 		<a type="button" class="btn btn-primary" href="<%=application.getContextPath()%>/IndexServlet" >返回主菜单</a>
 		</div>

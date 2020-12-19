@@ -21,7 +21,7 @@ public class BookDaoImpl implements BookDao {
 
 	@Override
 	public List<Book> selectBooksLikePublicLimit(String pname, int start, int pagenum) {
-		String sql = "select * from tb_book where publicName like concat('%','?','%') limit ?,?";
+		String sql = "select * from tb_book where publicName like concat('%',?,'%') limit ?,?";
 		List<Book> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Book>(Book.class),pname,start,pagenum);
 		return books;
 	}
@@ -58,9 +58,23 @@ public class BookDaoImpl implements BookDao {
 
 	@Override
 	public int countByPublicName(String pname) {
-		String sql = "select count(*) from tb_book where publicName like concat('%','?','%')";
+		String sql = "select count(*) from tb_book where publicName like concat('%',?,'%')";
 		int count = jdbcTemplate.queryForObject(sql, Integer.class,pname);
 		return count;
+	}
+
+	@Override
+	public List<Book> selectAllBooksWithNoPage() {
+		String sql = "select * from tb_book";
+		List<Book> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Book>(Book.class));
+		return books;
+	}
+
+	@Override
+	public List<Book> selectBookByName(String bname) {
+		String sql = "select * from tb_book where name=?";
+		List<Book> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Book>(Book.class),bname);
+		return books;
 	}
 
 }

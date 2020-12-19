@@ -44,9 +44,9 @@ form {
 	</div>
 		<div class="row">
 			<a type="button" class="btn btn-primary btn-lg btn-block" href="<%=application.getContextPath()%>/AllBookListServlet">1.图书列表</a>
-			<a type="button" class="btn btn-primary btn-lg btn-block">2.查找图书</a>
-			<a type="button" class="btn btn-primary btn-lg btn-block">3.添加图书</a>
-			<a type="button" class="btn btn-primary btn-lg btn-block">4.退出主菜单</a>
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="<%=application.getContextPath()%>/SearchBookServlet">2.查找图书</a>
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="<%=application.getContextPath()%>/InsertBookServlet">3.添加图书</a>
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="<%=application.getContextPath()%>/ToLoginServlet">4.退出主菜单</a>
 		</div>
 	</div>
 

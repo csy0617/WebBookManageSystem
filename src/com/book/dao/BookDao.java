@@ -8,6 +8,12 @@ public interface BookDao {
 	//查询所有图书列表
 	List<Book> selectAllBooks(int start, int pagenum);
 	
+	//查询所有图书（不分页）
+	List<Book> selectAllBooksWithNoPage();
+	
+	//根据书名查找图书
+	List<Book> selectBookByName(String bname);
+	
 	//查询所有图书的数量
 	int allBooksCount();
 	
